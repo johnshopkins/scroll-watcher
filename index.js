@@ -1,3 +1,5 @@
+var _ = require('./shims/underscore');
+
 var ScrollWatcher = function (eventsObject) {
 
   /**
