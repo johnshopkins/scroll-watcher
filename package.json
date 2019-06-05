@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/johnshopkins/scroll-watcher/issues"
   },
-  "homepage": "https://github.com/johnshopkins/scroll-watcher#readme"
+  "homepage": "https://github.com/johnshopkins/scroll-watcher#readme",
+  "dependencies": {
+    "lodash.throttle": "^4.1.1"
+  }
 }

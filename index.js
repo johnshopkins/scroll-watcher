@@ -1,4 +1,4 @@
-var _ = require('./shims/underscore');
+var throttle = require('lodash.throttle');
 
 var ScrollWatcher = function (eventsObject) {
 
@@ -27,7 +27,7 @@ var ScrollWatcher = function (eventsObject) {
 
 };
 
-ScrollWatcher.prototype.handleScroll = _.throttle(function (e) {
+ScrollWatcher.prototype.handleScroll = throttle(function (e) {
 
   if (this.scrollId) clearTimeout(this.scrollId);
 
