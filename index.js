@@ -1,6 +1,7 @@
-var throttle = require('lodash.throttle');
+const EventEmitter = require('wolfy87-eventemitter');
+const throttle = require('lodash.throttle');
 
-var ScrollWatcher = function (eventsObject) {
+const ScrollWatcher = function (eventEmitter) {
 
   /**
    * Information about the current scroll event
@@ -23,7 +24,7 @@ var ScrollWatcher = function (eventsObject) {
 
   this.scrollId = null;
 
-  this.vent = eventsObject;
+  this.eventEmitter = eventEmitter;
 
 };
 
@@ -35,7 +36,7 @@ ScrollWatcher.prototype.handleScroll = throttle(function (e) {
   this.depth = $(window).scrollTop();
 
   // figure out the direction of the current scroll
-  this.direction = this.previousDepth < this.depth ? "down" : "up";
+  this.direction = this.previousDepth < this.depth ? 'down' : 'up';
 
   // figre out if the direction changed from the last scroll
   if (this.previousDirection !== this.direction) {
@@ -50,7 +51,7 @@ ScrollWatcher.prototype.handleScroll = throttle(function (e) {
   this.previousDirection = this.direction;
 
   // create data
-  var data = {
+  const data = {
     e: e,
     depth: this.depth,
     direction: this.direction,
@@ -58,11 +59,10 @@ ScrollWatcher.prototype.handleScroll = throttle(function (e) {
   };
 
   // publish event
-  this.vent.trigger("winscroll", data);
+  this.eventEmitter.emit('winscroll', data);
 
-  var self = this;
-  this.scrollId = setTimeout(function () {
-    self.vent.trigger("winscroll:done", data);
+  this.scrollId = setTimeout(() => {
+    this.eventEmitter.emit('winscroll:done', data);
   }, 300);
 
 }, 10);
