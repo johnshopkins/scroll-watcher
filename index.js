@@ -33,7 +33,7 @@ ScrollWatcher.prototype.handleScroll = throttle(function (e) {
   if (this.scrollId) clearTimeout(this.scrollId);
 
   // depth of scroll from the top of the window
-  this.depth = $(window).scrollTop();
+  this.depth = window.scrollY;
 
   // figure out the direction of the current scroll
   this.direction = this.previousDepth < this.depth ? 'down' : 'up';
