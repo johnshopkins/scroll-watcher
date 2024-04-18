@@ -2,17 +2,6 @@
   "name": "@johnshopkins/scroll-watcher",
   "version": "1.1.1",
   "main": "index.js",
-  "exports": {
-    ".": "./dist/main.js"
-  },
-  "scripts": {
-    "test": "jest",
-    "coverage": "jest --coverage",
-    "build": "webpack build",
-    "dev": "webpack serve --config ./webpack.dev.js",
-    "stats": "webpack --json > stats.json",
-    "watch": "webpack watch"
-  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/johnshopkins/scroll-watcher.git"
